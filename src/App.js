@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import WineList from './WineList';
 import Header from './Header';
+import Popular from './Popular';
 
 
 class App extends React.Component {
@@ -55,7 +56,15 @@ class App extends React.Component {
 			<Header
 			/>
 				<div className="query">
-			<img id="glass" src="https://img1.goodfon.com/original/1920x1080/6/e8/wine-glass-wine-wood.jpg">
+			<div className="dropdown">
+						<button className="dropbtn">=</button>
+						<div className="dropdown-content">
+							<a href="#">Home</a>
+							<a href="#">Search</a>
+							<a href="#">Popular</a>
+						</div>
+					</div>
+			<img className="glass" src="https://img1.goodfon.com/original/1920x1080/6/e8/wine-glass-wine-wood.jpg">
 			</img>
 			<div className="text-box">
 				<h1>Explore the world of wine</h1>
@@ -82,6 +91,8 @@ class App extends React.Component {
 			<WineList
           		wineDataDisplay={this.state.wineData}
         />
+					<Popular
+		/>
 		 
 			</main>
 		);
