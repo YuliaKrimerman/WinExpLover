@@ -1,0 +1,68 @@
+li {
+	text-align: center;
+	text-decoration: none;
+	list-style-type: none;
+	padding: 3px;
+	float: right;
+	margin-right: 5px;
+	font-size: 20px;
+	font-weight: bolder;
+	font-family: 'Roboto', sans-serif;
+	color: white;
+	opacity: 0.9;
+}
+
+#list li {
+	text-align: left;
+	float:left;
+  padding: 5px;
+	letter-spacing: 3px;
+	font-weight: 700;
+	font-size: 1em;
+  color: black;
+		background: #FDE6C6;
+  background-size: full;
+  
+}
+
+
+.rating {
+	border: none;
+	float: left;
+}
+
+.rating > input {
+	display: none;
+}
+
+.rating > label:before {
+	margin: 5px;
+	font-size: 1.25em;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f005";
+}
+
+.rating > .half:before {
+	content: "\f089";
+	position: fixed;
+}
+
+.rating > label {
+	color: #ddd;
+	float: right;
+}
+
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+	color: brown
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+	color: brown;
+}
