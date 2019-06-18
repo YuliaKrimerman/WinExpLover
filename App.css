@@ -1,0 +1,187 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.query {
+	background: #FDE6C6;
+  background-size: full;
+	margin-top: 20px;
+	height: 600px;
+	padding: 10px;
+	background-repeat: no-repeat;
+}
+
+h1 {
+
+	margin-top: 2px;
+	top: 20px;
+	justify-content: space-around;
+	text-align: center;
+	font-family: 'Nunito', sans-serif;
+	font-size: 2em;
+	letter-spacing: 2px;
+	font-weight: 1000;
+	color: #000;
+	text-transform: uppercase
+}
+
+h2,
+p {
+	font-family: 'Nunito', sans-serif;
+	text-align: center;
+	font-size: 1em;
+	padding: 10px;
+}
+
+.text-box {
+	display: block;
+	margin-top: 50px;
+	width: 35%;
+	align-content: flex-start;
+	float: right;
+	margin-right: 5%;
+	opacity: 0.6;
+}
+
+#glass {
+  width:45%;
+  padding:1px;
+  border-radius:3%;
+	margin-top: 40px;
+	margin-left: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+input {
+	width: 60%;
+	padding: 12px 24px;
+	transition: transform 250ms ease-in-out;
+	letter-spacing: 4px;
+	line-height: 18px;
+	border: none;
+	border-bottom: 1px solid black;
+	color: #575756;
+	background-color: transparent;
+	font-size: 1em;
+	text-align: center;
+
+	margin-left: 15%;
+}
+
+.custom-btn {
+	padding: 10px 25px;
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	margin-top: 10px;
+	margin-left: 35%;
+	background: transparent;
+	outline: none !important;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+}
+
+.btn-4 {
+	width: 130px;
+	height: 40px;
+	line-height: 42px;
+	padding: 0;
+	border: none;
+}
+
+.btn-4 span {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.btn-4:before,
+.btn-4:after {
+	position: absolute;
+	content: "";
+	right: 0;
+	top: 0;
+	background: #000;
+	transition: all 0.3s ease;
+}
+
+.btn-4:before {
+	height: 50%;
+	width: 2px;
+}
+
+.btn-4:after {
+	width: 20%;
+	height: 2px;
+}
+
+.btn-4:hover:before {
+	height: 100%;
+}
+
+.btn-4:hover:after {
+	width: 100%;
+}
+
+.btn-4 span:before,
+.btn-4 span:after {
+	position: absolute;
+	content: "";
+	left: 0;
+	bottom: 0;
+	background: #000;
+	transition: all 0.3s ease;
+}
+
+.btn-4 span:before {
+	width: 2px;
+	height: 50%;
+}
+
+.btn-4 span:after {
+	width: 20%;
+	height: 2px;
+}
+
+.btn-4 span:hover:before {
+	height: 100%;
+}
+
+.btn-4 span:hover:after {
+	width: 100%;
+}

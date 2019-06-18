@@ -1,0 +1,46 @@
+
+ #results-list {
+	width: 85%;
+	height: 300px;
+	overflow-y: auto;
+  color: black;
+  	text-align: left;
+	float:left;
+  padding: 5px;
+	letter-spacing: 3px;
+	font-weight: 700;
+	font-size: 1em;
+	 	background: #FDE6C6;
+  background-size: full;
+}
+
+#list li {
+	text-align: left;
+	float:left;
+  padding: 5px;
+	letter-spacing: 3px;
+	font-weight: 700;
+	font-size: 1em;
+  color: black;
+		background: #FDE6C6;
+  background-size: full;
+  
+}
+.text-box {
+	display: block;
+	margin-top: 50px;
+	width: 35%;
+	align-content: flex-start;
+	float: right;
+	margin-right: 5%;
+	opacity: 0.6;
+}
+
+#glass {
+  width:45%;
+  padding:1px;
+  border-radius:3%;
+	margin-top: 40px;
+	margin-left: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
