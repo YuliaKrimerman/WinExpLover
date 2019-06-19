@@ -27,6 +27,9 @@ class Popular extends React.Component {
 						<label htmlFor="green">Most Commented</label>
 						<input type="radio" id="reset" name="color" />
 						<label htmlFor="reset">All</label>
+			   
+			   
+			   
 						<div className="tile blue clearfix"><img id="bottle"src="https://data.callmewine.com/imgprodotto/gewurztraminer-colterenzio-2018_16710_zoom.jpg">
 			   </img>
 							<h2>GEWÜRZTRAMINER</h2>

@@ -4,6 +4,8 @@ import WineList from './WineList';
 import Header from './Header';
 import Popular from './Popular';
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 class App extends React.Component {
 	constructor(props) {
@@ -52,6 +54,7 @@ class App extends React.Component {
 
 	render() {
 		return (
+			  <Router>
 			<main className ='App'>
 			<Header
 			/>
@@ -88,13 +91,19 @@ class App extends React.Component {
 			</div>
 		</div>
             </div>
-			<WineList
+ 		<Route
+           exact path='/'
+            render={() =>
+              <WineList
           		wineDataDisplay={this.state.wineData}
+              />}
+			
         />
 					<Popular
 		/>
 		 
 			</main>
+</Router>
 		);
 	}
 }
