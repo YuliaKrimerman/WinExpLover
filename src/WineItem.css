@@ -58,3 +58,7 @@ li {
 .rating > input:checked ~ label:hover ~ label {
 	color: brown;
 }
+
+h5 {
+	display: none;
+}

@@ -100,7 +100,7 @@ body {
 .force-overflow
 {
 	min-width: auto;
-	min-height: 450px;
+
 }
 
 #wrapper
@@ -128,3 +128,4 @@ body {
 	background-color: #000000;
 	border: 2px solid #555555;
 }
+

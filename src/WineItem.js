@@ -2,6 +2,7 @@ import React from 'react';
 
 import './WineItem.css';
 import UserDataContext from './userDataContext';
+import UsersData from './UsersData';
 
 
 class WineItem extends React.Component {
@@ -19,6 +20,7 @@ class WineItem extends React.Component {
 		this.setState({
 			comments: comments
 		})
+		
 	}
 
 	changeRating(rating) {
@@ -27,17 +29,28 @@ class WineItem extends React.Component {
 
 		})
 	}
+	changeCode(code) {
+		this.setState({
+			code: code
+
+		})
+	console.log(code)
+	}
+	
 
 	handleSubmit(e) {
 		e.preventDefault();
 		this.postUserData(this.state.rating.comments); //save user rating all the elemnts of the state
 	}
+	
 
 
-	postUserData(rating, comments) {
+
+	postUserData(rating, comments,code) {
 		let usersData = {
 			"comments": this.state.comments,
-			"rating": this.state.rating
+			"rating": this.state.rating,
+			"code":this.props.code
 		}
 		console.log(usersData)
 		fetch(`http://localhost:8000/usersData`, {
@@ -56,26 +69,22 @@ class WineItem extends React.Component {
                 throw error
             })
             }
+		
             return res.json()
         })
-			.then(usersData => () =>  {
-			this.context.postUserData(rating, comments)
-			})
-			.catch(err => {
-				console.log(err);
-			})
 	}
 
 
-
 	render() {
-		return ( <
-			div className = "list" >
+		
+		return ( 
+			  
+			<div className = "list" >
 			<ul id = "list" >
 			<li>
 			<img id = "bottle"
 			src = {this.props.image}
-			alt = {this.props.image.name}
+			alt = {this.props.image}
 			/> <
 			/li> <li>
 			Name: {this.props.name} <
@@ -84,11 +93,12 @@ class WineItem extends React.Component {
 			/li> <
 			li > Type: {this.props.wine_type} < br >
 			</br></li>
+			<h5> {this.props.code} </h5>
 			
-			<li> Rate <
-			form className = "formSubmit"
+			<li> Rate this wine: 
+			<form className = "formSubmit"
 			onSubmit = {e => this.handleSubmit(e)} >  
-			{this.props.code}
+			<h5 onSubmit = {e => this.changeCode(e.target.value)}> {this.props.code}</h5>
 			<fieldset className = "rating" >
 			<input type = "radio"
 			rating = "5"
@@ -177,10 +187,8 @@ class WineItem extends React.Component {
 			/div> </form>
 			</li>
 		</ul>
-<div>
-			<h2>Comments : {this.state.comments} </h2>
-			<h2>Rating : {this.state.rating} </h2>
-				</div>
+< UsersData usersDataDisplay={this.state.rating.comments}
+/>
 	</div>
 		)
 	}
