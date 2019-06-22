@@ -6,51 +6,63 @@ import './UsersData.css';
 export default class usersDataDisplay extends React.Component{
 	 constructor(props) {
     super(props);
-  }
+		 this.state = {
+			code: ''
+  }}
 	
-	
-	getUserData(rating, comments, code) {
-		let usersData = {
-			"comments": this.state.comments,
-			"rating": this.state.rating,
-			"code":this.state.code
+		onChangeCode(code) {
+			console.log(code)
+    this.setState({code: code});
+
+			
+			this.getUserDataByCode(code)
 		}
-		console.log(usersData)
-		fetch(`http://localhost:8000//usersData/:userData_id`, {
-				method: 'GET',
-				body: JSON.stringify(usersData),
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			})
 		
-		 .then(res => {
-            if (!res.ok) {
-            // get the error message from the response,
-            return res.json().then(error => {
-				console.log(res)
-                // then throw it
-                throw error
-            })
-            }
-            return res.json()
-        })
-			.then(usersData => () =>  {
-		//	this.props.handleDisplayUsersData(rating, comments, code)
-			})
-			.catch(err => {
-				console.log(err);
-			})
+	
+	handleClick(e) {
+		e.preventDefault();
+		this.onChangeCode(this.props.code);
+		//save user rating all the elemnts of the state
 	}
 
+	
+	getUserDataByCode(code) {
+		
+	const url = `http://localhost:8000/usersData/${code}`
+		console.log(url)
+		fetch(url)
+			.then(response => {
+				if (!response.ok) {
+					throw new Error(response.statusText);
+				}
+				return response.json();
+			})
+			.then(data => {
+			console.log(data)
+				this.setState({
+					wineData: data
+					
+			})
+		})
+			.catch(err => {
+				console.log(err);
+			});
+	}
+
+	
+	
+	
   render() {
-
-
-
+	
 	return (
 	<div className="userIntreaction">
-		<h2>Comments : {this.props.comments} </h2>
-			<h2>Rating  {this.props.rating} </h2>
+		<form>
+	<button type = "submit" onClick = {e => this.handleClick(e)}
+			className = "custom-btn btn-4f"> <span> Comments </span></button > 
+			<input className="dataUser" onChange = {e => this.onChangeCode(e.target.value)}>
+</input>
+		</form>
+
 	</div>
 		)
 

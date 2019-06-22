@@ -9,6 +9,7 @@ class WineItem extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			wineData:[],
 			rating: '',
 			comments: '',
 			code: ''
@@ -40,8 +41,13 @@ class WineItem extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		this.postUserData(this.state.rating.comments); //save user rating all the elemnts of the state
+		
+		this.postUserData(this.state.comments);
+		console.log(this.state.comments)
+		//save user rating all the elemnts of the state
 	}
+	
+	
 	
 
 
@@ -69,14 +75,40 @@ class WineItem extends React.Component {
                 throw error
             })
             }
-		
-            return res.json()
-        })
-	}
+		} )
+          //  return res.json()
+			.then(res => {
+				const url = `http://localhost:8000/usersData/${this.props.code}`
+				console.log(url)
+			fetch(url)
+			.then(response => {
+				if (!response.ok) {
+					throw new Error(response.statusText);
+				}
+				return response.json();
+			})
+			.then(data => {
+			console.log(data)
+				this.setState({
+					wineData:data
+					
+			})
+				
+		})
+			.catch(err => {
+				console.log(err);
+			});
+			}
+	)}
+
+	
+       
+	
 
 
 	render() {
-		
+		const thisWineData = this.state.wineData
+		console.log(thisWineData)
 		return ( 
 			  
 			<div className = "list" >
@@ -187,9 +219,17 @@ class WineItem extends React.Component {
 			/div> </form>
 			</li>
 		</ul>
-< UsersData usersDataDisplay={this.state.rating.comments}
-/>
+
+				<div>
+				<ul>
+  	<h2>Comments: {thisWineData.map(function(d, idx){
+         return (<li key={idx}>{d.comments}</li>)
+       })}
+</h2>
+  
+		</ul>
 	</div>
+								</div>
 		)
 	}
 }
