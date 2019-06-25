@@ -70,7 +70,7 @@ input[type="radio"] {
 }
 
 .container label {
-	width: 23%;
+	width: 45%;
 	float: left;
 	text-align: center;
 	background: #ffffff;
@@ -148,4 +148,11 @@ input[type="radio"][id="green"]:checked ~ .red {
   width:40%;
   padding:10px;
   margin-left:100px
+}
+
+
+.tile li {
+	color: black;
+	 list-style-type: circle;
+	width: 300px;
 }

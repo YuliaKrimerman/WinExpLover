@@ -12,6 +12,11 @@ li {
 	opacity: 0.9;
 }
 
+.comments li {
+	color: black;
+	list-style: square;
+	float: unset;
+}
 #bottle{
   width:40%;
   padding:10px;

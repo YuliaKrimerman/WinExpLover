@@ -3,8 +3,54 @@ import React from 'react';
 import './Popular.css'
 
 class Popular extends React.Component {
-	   render() {
+	constructor(props) {
+		super(props);
+		this.state = {
+			wineData:[],
+			rating:''
+		}
+	}
+	
+	
+	changeRating(rating) {
+					console.log(rating)
+
+		this.setState({
+			rating: rating
+		})
+		this.getPopularWines(rating);
+	}
+
+
+	getPopularWines(rating) {
+		
+		
+	const url = `http://localhost:8000/ratings/${rating}`
+				console.log(url)
+			fetch(url)
+			.then(response => {
+				if (!response.ok) {
+					throw new Error(response.statusText);
+				}
+				return response.json();
+			})
+			.then(data => {
+			console.log(data)
+				this.setState({
+					wineData:data
+					
+			})
+				
+		})
+			.catch(err => {
+				console.log(err);
+			});
+			}
+	
+render () {
+		const thisWinesData = this.state.wineData
 		   return (
+			   	
 			   <div>
 <div className="section">
 <div className="popular">
@@ -19,59 +65,57 @@ class Popular extends React.Component {
 					</div>
 					<h1>Popular Wines </h1>
 					<div className="container">
-						<input type="radio" id="blue" name="color" />
-						<label htmlFor="blue">Highest Rating</label>
-						<input type="radio" id="red" name="color" />
+						<input type="radio" rating="5" onClick = {e => this.changeRating(e.target.value)} value="5" id="blue"name="color" />
+						<label htmlFor="blue">Highest Rating </label>
+						<input type="radio" rating="1" onClick = {e => this.changeRating(e.target.value)} value="1" id="red" name="color" />
 						<label htmlFor="red">Lowest rating</label>
-						<input type="radio" id="green" name="color" />
-						<label htmlFor="green">Most Commented</label>
-						<input type="radio" id="reset" name="color" />
-						<label htmlFor="reset">All</label>
+		
 			   
-			   
-			   
-						<div className="tile blue clearfix"><img id="bottle"src="https://data.callmewine.com/imgprodotto/gewurztraminer-colterenzio-2018_16710_zoom.jpg">
-			   </img>
-							<h2>GEWÜRZTRAMINER</h2>
-							<p>Description: Gewurztraminer is a pink-skinned grape variety that produces some of the world's most distinctive aromatic wines. Its perfumed style is somewhat polarizing; fans adore its intense floral scent and sweet-spice flavors, while detractors lament its low acidity and lack of subtlety</p>
-							<p>Rating:4.6</p>
-						</div>
-						<div className="tile red clearfix"><img id="bottle"
-            src="https://data.callmewine.com/imgprodotto/gewurztraminer-colterenzio-2018_16710_zoom.jpg">
-			   </img>
-							<h2>GEWÜRZTRAMINER</h2>
-							<p>Description: Gewurztraminer is a pink-skinned grape variety that produces some of the world's most distinctive aromatic wines. Its perfumed style is somewhat polarizing; fans adore its intense floral scent and sweet-spice flavors, while detractors lament its low acidity and lack of subtlety</p>
-							<p>Rating:4.6</p>
-						</div>
-						<div className="tile blue clearfix"><img id="bottle" src="https://data.callmewine.com/imgprodotto/gewurztraminer-colterenzio-2018_16710_zoom.jpg">
-			   </img>
-							<h2>GEWÜRZTRAMINER</h2>
-							<p >Description: Gewurztraminer is a pink-skinned grape variety that produces some of the world's most distinctive aromatic wines. Its perfumed style is somewhat polarizing; fans adore its intense floral scent and sweet-spice flavors, while detractors lament its low acidity and lack of subtlety</p>
-							<p>Rating:4.6</p>
-						</div>
-						<div className="tile green clearfix"><img id="bottle" src="https://data.callmewine.com/imgprodotto/gewurztraminer-colterenzio-2018_16710_zoom.jpg">
-			   </img>
-							<h2>GEWÜRZTRAMINER</h2>
-							<p>Description: Gewurztraminer is a pink-skinned grape variety that produces some of the world's most distinctive aromatic wines. Its perfumed style is somewhat polarizing; fans adore its intense floral scent and sweet-spice flavors, while detractors lament its low acidity and lack of subtlety</p>
-							<p>Rating:4.6</p>
-						</div>
-            			<div className="tile blue clearfix"><img id="bottle"src="https://data.callmewine.com/imgprodotto/gewurztraminer-colterenzio-2018_16710_zoom.jpg">
-			   </img>
-							<h2>GEWÜRZTRAMINER</h2>
-							<p>Description: Gewurztraminer is a pink-skinned grape variety that produces some of the world's most distinctive aromatic wines. Its perfumed style is somewhat polarizing; fans adore its intense floral scent and sweet-spice flavors, while detractors lament its low acidity and lack of subtlety</p>
-							<p>Rating:4.6</p>
-						</div>
-					
-        
-					</div>
+			  
+						<div className="tile blue clearfix">
+							{thisWinesData.map(function(d, idx){
+         					return (
+							 <ul>
+							  <li key={idx}> <img src={d.image} alt="wine bottle" 
+/>
+</li> 
+							 	<li key={idx}>Comments:"{d.comments}"
+</li>
+								<li key={idx}>Name:"{d.code}"
+									</li>
+								<li key={idx}>{d.rating}
+									</li>
+       						
+</ul>
+)})}
+</div>
+<div className="tile red clearfix">
+							{thisWinesData.map(function(d, idx){
+         					return (
+							 <ul>
+		  <li key={idx}> <img src={d.image} alt="wine bottle"
+/>
+</li> 
+							 	<li key={idx}> Comments:"{d.comments}"
+</li>
+								<li key={idx}>Name:"{d.code}"
+									</li>
+								<li key={idx}>Rate:{d.rating}
+									</li>
+       						
+</ul>
+)})}
+</div>
 			   
 			   </div>
+</div>
 			   </div>
-			   </div>
-				
+</div>
+			
+			
 		
 	)
 	   }
+
 }
-			   
 export default Popular;

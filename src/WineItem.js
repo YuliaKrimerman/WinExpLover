@@ -12,7 +12,8 @@ class WineItem extends React.Component {
 			wineData:[],
 			rating: '',
 			comments: '',
-			code: ''
+			code: '',
+			image:''
 		}
 	}
 	
@@ -52,11 +53,12 @@ class WineItem extends React.Component {
 
 
 
-	postUserData(rating, comments,code) {
+	postUserData(rating, comments,code,image) {
 		let usersData = {
 			"comments": this.state.comments,
 			"rating": this.state.rating,
-			"code":this.props.code
+			"code":this.props.code,
+			"image":this.props.image
 		}
 		console.log(usersData)
 		fetch(`http://localhost:8000/usersData`, {
@@ -220,12 +222,12 @@ class WineItem extends React.Component {
 			</li>
 		</ul>
 
-				<div>
+				<div className="comments">
 				<ul>
-  	<h2>Comments: {thisWineData.map(function(d, idx){
+  	<h2>Comments:</h2> {thisWineData.map(function(d, idx){
          return (<li key={idx}>{d.comments}</li>)
        })}
-</h2>
+
   
 		</ul>
 	</div>
@@ -233,5 +235,6 @@ class WineItem extends React.Component {
 		)
 	}
 }
+
 
 export default WineItem;

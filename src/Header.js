@@ -1,6 +1,7 @@
     
 import React from 'react';
 import './Header.css'
+
 class Header extends React.Component {
 	
 	render() {
@@ -8,7 +9,8 @@ class Header extends React.Component {
 	<div>
 		<header>
 	 	<img className="logo"
-	 		 src="https://i.ibb.co/M8kbcbp/cvxcvcxv.png" >
+	 		 src="https://i.ibb.co/M8kbcbp/cvxcvcxv.png" 
+	 alt='background'>
 	  </img>
 	 </header>
 	 <div className="start">
@@ -22,7 +24,7 @@ class Header extends React.Component {
 		</nav>
 		<h3>Share and Explore your</h3>
 		<h4>Love of Wine</h4>
-		<button type="button" role="button" id="button" className="fill">Start</button>
+		<button type="button" id="button" className="fill">Start</button>
 	</div>
 	  </div>
 	 )
