@@ -126,7 +126,7 @@ input[type="radio"][id="green"]:checked ~ .red {
 	width: 21%;
 	max-height: 50px;
   /* float:left; */
-	display: inline-block; 
+	display: inline-block;
 	transition: all 1s;
 	margin: 0.5%;
 	padding: 0.5%;
@@ -153,6 +153,9 @@ input[type="radio"][id="green"]:checked ~ .red {
 
 .tile li {
 	color: black;
-	 list-style-type: circle;
+	 list-style-type: none;
 	width: 300px;
+	    letter-spacing: 3px;
+    font-weight: 550;
+    font-size: 10px;
 }

@@ -11,10 +11,7 @@ class Popular extends React.Component {
 		}
 	}
 	
-	
 	changeRating(rating) {
-					console.log(rating)
-
 		this.setState({
 			rating: rating
 		})
@@ -23,10 +20,7 @@ class Popular extends React.Component {
 
 
 	getPopularWines(rating) {
-		
-		
 	const url = `http://localhost:8000/ratings/${rating}`
-				console.log(url)
 			fetch(url)
 			.then(response => {
 				if (!response.ok) {
@@ -38,29 +32,25 @@ class Popular extends React.Component {
 			console.log(data)
 				this.setState({
 					wineData:data
-					
 			})
-				
 		})
 			.catch(err => {
 				console.log(err);
 			});
-			}
+		}
 	
 render () {
 		const thisWinesData = this.state.wineData
-		   return (
-			   	
+		   return ( 	
 			   <div>
-<div className="section">
-<div className="popular">
-			   
+			   	<div className="section">
+			   	<div className="popular">
 					<div className="dropdown">
 						<button className="dropbtn"></button>
 						<div className="dropdown-content">
-							<a href="#">Home</a>
-							<a href="#">Search</a>
-							<a href="#">Popular</a>
+							<a href="#home">Home</a>
+							<a href="#search">Search</a>
+							<a href="#popular">Popular</a>
 						</div>
 					</div>
 					<h1>Popular Wines </h1>
@@ -69,53 +59,43 @@ render () {
 						<label htmlFor="blue">Highest Rating </label>
 						<input type="radio" rating="1" onClick = {e => this.changeRating(e.target.value)} value="1" id="red" name="color" />
 						<label htmlFor="red">Lowest rating</label>
-		
-			   
-			  
+
 						<div className="tile blue clearfix">
 							{thisWinesData.map(function(d, idx){
          					return (
-							 <ul>
-							  <li key={idx}> <img src={d.image} alt="wine bottle" 
-/>
-</li> 
-							 	<li key={idx}>Comments:"{d.comments}"
-</li>
-								<li key={idx}>Name:"{d.code}"
+							 	<ul>
+							  		<li key={idx}> <img src={d.image} alt="wine bottle" />
+									</li> 
+							 		<li key={idx}>Comments:"{d.comments}"
 									</li>
-								<li key={idx}>{d.rating}
+									<li key={idx}>Name:"{d.code}"
 									</li>
-       						
-</ul>
-)})}
-</div>
-<div className="tile red clearfix">
+									<li key={idx}>Rate:{d.rating}
+									</li>
+								</ul>
+									)})}
+						</div>
+						<div className="tile red clearfix">
 							{thisWinesData.map(function(d, idx){
          					return (
-							 <ul>
-		  <li key={idx}> <img src={d.image} alt="wine bottle"
-/>
-</li> 
-							 	<li key={idx}> Comments:"{d.comments}"
-</li>
-								<li key={idx}>Name:"{d.code}"
+							 	<ul>
+		  							<li key={idx}> <img src={d.image} alt="wine bottle"/>
+									</li> 
+							 		<li key={idx}> Comments:"{d.comments}"
 									</li>
-								<li key={idx}>Rate:{d.rating}
+									<li key={idx}>Name:"{d.code}"
 									</li>
-       						
-</ul>
-)})}
-</div>
-			   
-			   </div>
-</div>
-			   </div>
-</div>
+									<li key={idx}>Rate:{d.rating}
+									</li>
+								</ul>
+								)})}
+						</div>
+			   		</div>
+				</div>
+			  </div>
+			</div>
 			
-			
-		
-	)
-	   }
-
-}
+		)
+	  }
+	}
 export default Popular;

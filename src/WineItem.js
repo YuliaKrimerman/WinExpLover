@@ -1,237 +1,145 @@
 import React from 'react';
-
 import './WineItem.css';
-import UserDataContext from './userDataContext';
-import UsersData from './UsersData';
+import StarRatingComponent from 'react-star-rating-component';
 
 
 class WineItem extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			wineData:[],
-			rating: '',
-			comments: '',
-			code: '',
-			image:''
-		}
-	}
-	
-	
-	searchTermUpdate(comments) {
-		this.setState({
-			comments: comments
-		})
-		
-	}
-
-	changeRating(rating) {
-		this.setState({
-			rating: rating
-
-		})
-	}
-	changeCode(code) {
-		this.setState({
-			code: code
-
-		})
-	console.log(code)
-	}
-	
-
-	handleSubmit(e) {
-		e.preventDefault();
-		
-		this.postUserData(this.state.comments);
-		console.log(this.state.comments)
-		//save user rating all the elemnts of the state
-	}
-	
-	
-	
-
-
-
-	postUserData(rating, comments,code,image) {
-		let usersData = {
-			"comments": this.state.comments,
-			"rating": this.state.rating,
-			"code":this.props.code,
-			"image":this.props.image
-		}
-		console.log(usersData)
-		fetch(`http://localhost:8000/usersData`, {
-				method: 'POST',
-				body: JSON.stringify(usersData),
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			})
-		
-		 .then(res => {
-            if (!res.ok) {
-            // get the error message from the response,
-            return res.json().then(error => {
-                // then throw it
-                throw error
-            })
-            }
-		} )
-          //  return res.json()
-			.then(res => {
-				const url = `http://localhost:8000/usersData/${this.props.code}`
-				console.log(url)
-			fetch(url)
-			.then(response => {
-				if (!response.ok) {
-					throw new Error(response.statusText);
-				}
-				return response.json();
-			})
-			.then(data => {
-			console.log(data)
-				this.setState({
-					wineData:data
-					
-			})
-				
-		})
-			.catch(err => {
-				console.log(err);
-			});
+		constructor(props) {
+			super(props);
+			this.state = {
+				wineData: [],
+				rating: '',
+				comments: '',
+				code: '',
+				image: ''
 			}
-	)}
+		}
 
-	
-       
+		//update the state for the current comment
+		searchTermUpdate(comments) {
+			this.setState({
+				comments: comments
+			})
+		}
+
+		//set state for the current rating value
+		onStarClick(nextValue, prevValue, name) {
+			this.setState({
+				rating: nextValue
+			});
+		}
+
+		// set state for the recieved code
+		changeCode(code) {
+			this.setState({
+				code: code
+			})
+		}
+
+		// submit form trigers to post the user data to the DB
+		handleSubmit(e) {
+			e.preventDefault();
+			this.postUserData();
+
+		}
+
+		postUserData() {
+			let usersData = {
+				"comments": this.state.comments,
+				"rating": this.state.rating,
+				"code": this.props.code,
+				"image": this.props.image
+			}
+
+			fetch(`http://localhost:8000/usersData`, {
+					method: 'POST',
+					body: JSON.stringify(usersData),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+
+				.then(res => {
+					if (!res.ok) {
+						// get the error message from the response,
+						return res.json().then(error => {
+							// then throw it
+							throw error
+						})
+					}
+				})
+
+				.then(res => {
+					const url = `http://localhost:8000/usersData/${this.props.code}`
+					console.log(url)
+					fetch(url)
+						.then(response => {
+							if (!response.ok) {
+								throw new Error(response.statusText);
+							}
+							return response.json();
+						})
+						.then(data => {
+							this.setState({
+								wineData: data
+							})
+
+						})
+						.catch(err => {
+							console.log(err);
+						});
+				})
+		}
 	
 
 
 	render() {
 		const thisWineData = this.state.wineData
-		console.log(thisWineData)
+		const { rating } = this.state;
 		return ( 
-			  
-			<div className = "list" >
-			<ul id = "list" >
-			<li>
-			<img id = "bottle"
-			src = {this.props.image}
-			alt = {this.props.image}
-			/> <
-			/li> <li>
-			Name: {this.props.name} <
-			/li> <
-			li > Region: {this.props.region} <
-			/li> <
-			li > Type: {this.props.wine_type} < br >
-			</br></li>
-			<h5> {this.props.code} </h5>
-			
-			<li> Rate this wine: 
-			<form className = "formSubmit"
-			onSubmit = {e => this.handleSubmit(e)} >  
-			<h5 onSubmit = {e => this.changeCode(e.target.value)}> {this.props.code}</h5>
-			<fieldset className = "rating" >
-			<input type = "radio"
-			rating = "5"
-			onChange = {e => this.changeRating(e.target.value)}
-			id = "star5"
-			name = "rating"
-			value = "5" / > < label className = "full"
-			htmlFor = "star5" > < /label>
-
-			<input type = "radio"
-			rating = "4.5"
-			onChange = {e => this.changeRating(e.target.value)}
-			id = "star4half"
-			name = "rating"
-			value = "4.5" / > < label className = "half"
-			htmlFor = "star4half" > < /label> 
-
-			<input type = "radio"
-			rating = "4" onChange = {e => this.changeRating(e.target.value)}
-			id = "star4"
-			name = "rating"
-			value = "4" / > < label className = "full"
-			htmlFor = "star4" > < /label> 
-
-			<input type = "radio"
-			rating = "3.5" onChange = {e => this.changeRating(e.target.value)}
-			id = "star3half"
-			name = "rating"
-			value = "3.5" / > < label className = "half"
-			htmlFor = "star3half" > < /label>
-
-			<input type = "radio"
-			rating = "3" onChange = {e => this.changeRating(e.target.value)}
-			id = "star3"
-			name = "rating"
-			value = "3" / > < label className = "full"
-			htmlFor = "star3" > < /label> 
-
-			<input type = "radio"
-			rating = "2.5" onChange = {e => this.changeRating(e.target.value)}
-			id = "star2half"
-			name = "rating"
-			value = "2.5" / > < label className = "half"
-			htmlFor = "star2half" > < /label>
-			
-			<input type = "radio"
-			rating = "2" onChange = {e => this.changeRating(e.target.value)}
-			id = "star2"
-			name = "rating"
-			value = "2" / > < label className = "full"
-			htmlFor = "star2" > < /label>
-
-			<input type = "radio"
-			rating = "1.5" onChange = {e => this.changeRating(e.target.value)}
-			id = "star1half"
-			name = "rating"
-			value = "1.5" / > < label className = "half"
-			htmlFor = "star1half"
-			title = "Meh - 1.5 stars" > < /label> 
-
-			<input type = "radio"
-			rating = "1.5" onChange = {e => this.changeRating(e.target.value)}
-			id = "star1"
-			name = "rating"
-			value = "1" / > < label className = "full"
-			htmlFor = "star1"
-			title = "Sucks big time - 1 star" > < /label> 
-
-			<input type = "radio"
-			rating = "0.5" onChange = {e => this.changeRating(e.target.value)}
-			id = "starhalf"
-			name = "rating"
-			value = "0.5" / > < label className = "half"
-			htmlFor = "starhalf"
-			title = "Sucks big time - 0.5 stars" > < /label> 
-			</fieldset>
-
-			<div className = "container" >
-			<input type = "text"
-			onChange = {e => this.searchTermUpdate(e.target.value)}
-			placeholder = "Comment" >
-			</input> <
-			div className = "buttons-coll" >
-			<button type = "submit"
-			className = "custom-btn btn-4" > < span > Post < /span></button > < /div> <
-			/div> </form>
-			</li>
-		</ul>
-
-				<div className="comments">
+			<div className = "list">
+				<ul id = "list" >
+					<li> <img id = "bottle"
+						      src = {this.props.image}
+			                  alt = {this.props.image}/>
+					</li> 
+					<li>Name: {this.props.name} 
+					</li> 
+					<li> Region: {this.props.region} 
+					</li> 
+					<li> Type: {this.props.wine_type}
+					</li>
+					<li> Rate this wine: 
+						<form className = "formSubmit"
+							onSubmit = {e => this.handleSubmit(e)} >  
+			 				<StarRatingComponent 
+          						name="rate1" 
+          						starCount={5}
+          						value={rating}
+          						onStarClick={this.onStarClick.bind(this)}
+        					/>
+							<div className = "container">
+								<input type = "text"
+								onChange = {e => this.searchTermUpdate(e.target.value)}
+								placeholder = "Comment" >
+								</input> 
+							<div className = "buttons-coll" >
+								<button type = "submit"
+								className ="custom-btn btn-4"> <span> Post </span>
+								</button> 
+							</div> 
+							</div> 
+						</form>
+					</li>
+				</ul>
+			<div className="comments">
 				<ul>
-  	<h2>Comments:</h2> {thisWineData.map(function(d, idx){
-         return (<li key={idx}>{d.comments}</li>)
-       })}
-
-  
-		</ul>
-	</div>
-								</div>
+  					<h2>Comments:</h2> {thisWineData.map(function(d, idx){
+         				return (<li key={idx}>{d.comments}</li>)
+       				})}
+				</ul>
+			</div>
+		</div>
 		)
 	}
 }
