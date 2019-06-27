@@ -70,7 +70,7 @@ class WineItem extends React.Component {
 				})
 
 				.then(res => {
-					const url = `https://sheltered-cove-22859.herokuapp.com/${this.props.code}`
+					const url = `https://sheltered-cove-22859.herokuapp.com/usersData/${this.props.code}`
 					console.log(url)
 					fetch(url)
 						.then(response => {
