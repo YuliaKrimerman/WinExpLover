@@ -2,6 +2,7 @@
 import React from 'react';
 import './Header.css'
 
+
 class Header extends React.Component {
 	
 	render() {
@@ -24,7 +25,7 @@ class Header extends React.Component {
 					</nav>
 					<h3>Share and Explore your</h3>
 					<h4>Love of Wine</h4>
-					<button type="button" id="button" className="fill">Scroll Down</button>
+			 
 				</div>
 	  		</div>
 	 	)

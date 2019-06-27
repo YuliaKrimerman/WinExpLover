@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Header';
 import Popular from './Popular';
 import WineItem from './WineItem';
-
+import scrollToComponent from 'react-scroll-to-component';
 
 class App extends React.Component {
 	constructor(props) {
@@ -14,7 +14,7 @@ class App extends React.Component {
 			 hidediv: false
 		}
 	}
-	
+
 	// update the state with the input by the user
 	searchTermUpdate(term) {
 		this.setState({
@@ -60,7 +60,10 @@ class App extends React.Component {
 				<main className ='App'>
 					<Header 
 					/>
+				 <button type="button" id="button" onClick={() => scrollToComponent(this.Blue, { offset: -1, align: 'buttom', duration: 150, ease:'inCirc'})}>Start</button>
+					
 					<div className="query" id="search" hidden = {this.state.hidediv}>
+				 <section className='blue' ref={(section) => { this.Blue = section; }}>
 						<div className="dropdown">
 							<button className="dropbtn">=</button>
 								<div className="dropdown-content">
@@ -92,6 +95,7 @@ class App extends React.Component {
           				</form>
 					</div>
 				</div>
+						</section>
             </div>
 			<div hidden = {!this.state.hidediv}>
 				 <div className="dropdown">

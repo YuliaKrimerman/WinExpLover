@@ -8,12 +8,12 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-scroll-to-component": "^1.0.2",
     "react-star-rating-component": "^1.4.1",
     "react-switch": "^5.0.0",
     "simplebar": "^4.0.0"
-	  
   },
- "scripts": {
+  "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
