@@ -20,7 +20,7 @@ class Popular extends React.Component {
 
 
 	getPopularWines(rating) {
-	const url = `http://localhost:8000/ratings/${rating}`
+	const url = `https://sheltered-cove-22859.herokuapp.com/ratings/${rating}`
 			fetch(url)
 			.then(response => {
 				if (!response.ok) {
@@ -42,19 +42,8 @@ class Popular extends React.Component {
 render () {
 		const thisWinesData = this.state.wineData
 		   return ( 	
-			   <div>
-			   	<div className="section">
-			   	<div className="popular">
-					<div className="dropdown">
-						<button className="dropbtn"></button>
-						<div className="dropdown-content">
-							<a href="#home">Home</a>
-							<a href="#search">Search</a>
-							<a href="#popular">Popular</a>
-						</div>
-					</div>
-					<h1>Popular Wines </h1>
-					<div className="container">
+					<div className="resultWrap">
+			   			<h6>Popular Wines </h6>
 						<input type="radio" rating="5" onClick = {e => this.changeRating(e.target.value)} value="5" id="blue"name="color" />
 						<label htmlFor="blue">Highest Rating </label>
 						<input type="radio" rating="1" onClick = {e => this.changeRating(e.target.value)} value="1" id="red" name="color" />
@@ -91,9 +80,8 @@ render () {
 								)})}
 						</div>
 			   		</div>
-				</div>
-			  </div>
-			</div>
+			
+		
 			
 		)
 	  }

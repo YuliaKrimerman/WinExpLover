@@ -51,7 +51,7 @@ class WineItem extends React.Component {
 				"image": this.props.image
 			}
 
-			fetch(`http://localhost:8000/usersData`, {
+			fetch(`https://sheltered-cove-22859.herokuapp.com/usersData`, {
 					method: 'POST',
 					body: JSON.stringify(usersData),
 					headers: {
@@ -70,7 +70,7 @@ class WineItem extends React.Component {
 				})
 
 				.then(res => {
-					const url = `http://localhost:8000/usersData/${this.props.code}`
+					const url = `https://sheltered-cove-22859.herokuapp.com/${this.props.code}`
 					console.log(url)
 					fetch(url)
 						.then(response => {
@@ -119,7 +119,7 @@ class WineItem extends React.Component {
           						onStarClick={this.onStarClick.bind(this)}
         					/>
 							<div className = "container">
-								<input type = "text"
+								<input type = "text" required
 								onChange = {e => this.searchTermUpdate(e.target.value)}
 								placeholder = "Comment" >
 								</input> 
@@ -134,7 +134,7 @@ class WineItem extends React.Component {
 				</ul>
 			<div className="comments">
 				<ul>
-  					<h2>Comments:</h2> {thisWineData.map(function(d, idx){
+  					<h7>Comments:</h7> {thisWineData.map(function(d, idx){
          				return (<li key={idx}>{d.comments}</li>)
        				})}
 				</ul>

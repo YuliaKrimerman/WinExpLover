@@ -75,7 +75,7 @@ p {
 	opacity: 0.6;
 }
 
-.glass {
+.glass{
   width:45%;
   padding:1px;
   border-radius:3%;
@@ -231,3 +231,63 @@ input {
 	background-color: brown;
 }
 
+@media only screen and (max-width: 1024px) {
+.glass {
+  width:45%;
+  height:70%;
+	margin-right: 0;
+
+}
+
+	input {
+		margin-left: 0;
+	}
+	.custom-btn {
+		margin-left: 0;
+	}
+.text-box {
+  width:25%
+}
+
+.list{
+  width:300px;
+  font-size: 15px;
+}
+
+.container label{
+  width: 15%;
+  float: none;
+}
+
+
+}
+@media only screen and (max-width: 768px) {
+body {
+  background: #FDE6C6;
+}
+  #glass {
+  width:95%;;
+  height:70%;
+
+}
+.text-box {
+  width:85%
+}
+
+.list{
+  width:90%;
+  font-size: 15px;
+}
+
+h1{
+margin-top: 10px;
+}
+
+
+}
+
+
+
+@media only screen and (max-width: 480px) {
+
+}

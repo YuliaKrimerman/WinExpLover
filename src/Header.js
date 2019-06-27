@@ -7,7 +7,7 @@ class Header extends React.Component {
 	render() {
  		return (
 			<div>
-				<header>
+				<header id="home">
 	 				<img className="logo"
 	 		 			src="https://i.ibb.co/M8kbcbp/cvxcvcxv.png" 
 	 					alt='background'>
@@ -24,7 +24,7 @@ class Header extends React.Component {
 					</nav>
 					<h3>Share and Explore your</h3>
 					<h4>Love of Wine</h4>
-					<button type="button" id="button" className="fill">Start</button>
+					<button type="button" id="button" className="fill">Scroll Down</button>
 				</div>
 	  		</div>
 	 	)

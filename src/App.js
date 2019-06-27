@@ -29,7 +29,7 @@ class App extends React.Component {
     }
 	
 	getWineData(searchTerm) {
-		const url = `http://localhost:8000/wine-api-data/${searchTerm}`
+		const url = `https://sheltered-cove-22859.herokuapp.com/wine-api-data/${searchTerm}`
 		fetch(url)
 			.then(response => {
 				if (!response.ok) {
@@ -58,7 +58,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<main className ='App'>
-					<Header id="home"
+					<Header 
 					/>
 					<div className="query" id="search" hidden = {this.state.hidediv}>
 						<div className="dropdown">
@@ -123,7 +123,6 @@ class App extends React.Component {
 	</main>
 </div>
         )
-
 	}
 }
 export default App;

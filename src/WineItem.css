@@ -69,6 +69,14 @@ h5 {
 	display: none;
 }
 
+h7 { 
+font-family: 'Nunito', sans-serif;
+	
+	font-size: 0.8em;
+	padding: 10px;
+	font-weight: 1000;
+}
+
 
 
  #results-list {
@@ -88,7 +96,7 @@ h5 {
 
 #list li {
 	text-align: left;
-	float:left;
+	float:initial;
   padding: 5px;
 	letter-spacing: 3px;
 	font-weight: 700;
@@ -205,3 +213,24 @@ body {
 	list-style: none;
 	color:red;
 }
+
+
+@media only screen and (max-width: 1024px) {
+.glass {
+  width:50%;
+  height:70%;
+	margin-right: 0;
+
+}
+	
+	.scrollbar {
+	max-width: 250px;
+		margin-left: 0;
+		
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.scrollbar {
+	max-width: 95%;
+	}}
