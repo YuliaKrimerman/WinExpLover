@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# WinExplover
 
-## Available Scripts
+Live Demo: https://winexplover.yuliakrimerman.now.sh/
 
-In the project directory, you can run:
+## Summary
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The purpose of this app is to allow people to search for different types of wines and post their rating and comments about wines they
+have tried. After the user posts his review about a particular wine, he's able to see comments of other users that have commented on 
+that particular wine. Also the App has a popular wines page that displays highest rate and lowes rate wines wich users rated 5 or 1 
+star accordingly.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+### Main Page View 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![one](https://user-images.githubusercontent.com/46899367/60440695-59eb8700-9be3-11e9-9c31-12fcdc4ab3c1.png)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Wines Search View 
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+![two](https://user-images.githubusercontent.com/46899367/60440808-99b26e80-9be3-11e9-8efb-57b7e3bcf034.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Restaurants Results View 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![three](https://user-images.githubusercontent.com/46899367/60440929-e8600880-9be3-11e9-913c-f9a2bc56d3df.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Popular Wines View
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![four](https://user-images.githubusercontent.com/46899367/60440996-12b1c600-9be4-11e9-983e-6d77ebd578f5.png)
 
-## Learn More
+## User Stories 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-As a new user I want to land on the main page and understand it's purpose
+-As a new user I want to press on the start button and be navigated to the Search wines page.
+-As a new user I want to look ups for a name of a wine and press the search button and recieve a list of wines.
+-As a new user I want to see different properties of the wine I was searching for like - description, alcohol volume and rating
+-As a new user I want to ne able to rate a selected wine on a 1-5 scale and be able to add my comment about the wine.
+-As a new user I want to be able to navigate to home page and to Popular Wines page from any page.
+-As a new user I want to be able to navigate to Popular Wines page that will display a list of wines that I can filter by rate. 
+-As a returning user I want to be ablt to do all the things that the new user can do.
+-As a user with dissabilities I want to be abt to navigate through the page and understand it's puspose.
+-As an admin I want to be to see the comments and the rates that were left by a public users.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technologies Used 
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+(HTML / CSS / JavaScript / React / Node.js / PostgresSQL / express)
