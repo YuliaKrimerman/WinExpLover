@@ -29,7 +29,6 @@ class Popular extends React.Component {
 				return response.json();
 			})
 			.then(data => {
-			console.log(data)
 				this.setState({
 					wineData:data
 			})
